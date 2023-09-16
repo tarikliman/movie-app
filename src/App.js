@@ -1,32 +1,42 @@
-import { useState } from "react";
-import { MovieList } from "./MovieList";
+import { useEffect, useState } from "react";
+import { MovieList } from "./components/MovieList/MovieList";
+import "./App.css";
+import { SearchInput } from "./components/SearchInput/SearchInput";
 function App() {
+  const [movies, setMovies] = useState([]);
+  const [searchValue,setSearchValue] = useState("");
 
-  const [movies, setMovies] = useState([ {
-    "Title": "Star Wars: Episode IV - A New Hope",
-    "Year": "1977",
-    "imdbID": "tt0076759",
-    "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-},
-{
-    "Title": "Star Wars: Episode V - The Empire Strikes Back",
-    "Year": "1980",
-    "imdbID": "tt0080684",
-    "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-},
-{
-    "Title": "Star Wars: Episode VI - Return of the Jedi",
-    "Year": "1983",
-    "imdbID": "tt0086190",
-    "Type": "movie",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
-}]);
+  const getMovies = async () => {
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=ffaeee98`;
+
+    const response = await fetch(url);
+    const responseJson = await response.json();
+
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, [searchValue]);
 
   return (
-    <div className="grid-cols-5">
-      <MovieList movies = {movies}/>
+
+    <div className="app">
+      <div className= "flex justify-between text-slate-50 mb-12">
+      
+      <SearchInput value= {searchValue} setValue = {setSearchValue}/>
+      
+      
+      </div>
+      
+      
+      <div className = "category-row">
+       <p class="text-slate-100 pl-8 pb-4 font-medium ">Searched</p>
+      <MovieList movies={movies} />
+      </div>
+      
     </div>
   );
 }
