@@ -5,11 +5,10 @@
     display: grid;
     grid-gap: calc(var(--gutter));
     grid-template-columns: 10px;
-    grid-template-rows: minmax(150px, 1fr);
+    grid-template-rows: minmax(18vw, 1fr);
     grid-auto-flow: column;
     grid-auto-columns: calc(14% - var(--gutter) * 2);
-    
-    overflow-x: scroll;
+    overflow-x: auto;
     scroll-snap-type: x proximity;
     padding-bottom: calc(.75 * var(--gutter));
     margin-bottom: calc(-.25 * var(--gutter));
