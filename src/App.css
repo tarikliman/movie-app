@@ -2,20 +2,7 @@
     --gutter: 20px;
   }
   
-  .app {
-    min-width: 100vw;
-    background-color: #12151c;
-    padding: var(--gutter) var(--gutter);
-    display: grid;
-    grid-gap: var(--gutter) 0;
-    grid-template-columns: var(--gutter) 1fr var(--gutter);
-    align-content: start;
-  }
-  
-  .app > * {
-    grid-column: 2 / -2;
-  }
-  
+
   .app > .full {
     grid-column: 1 / -1;
   }
