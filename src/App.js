@@ -58,7 +58,8 @@ const Container = styled.div`
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState("Harry");
+  const [searchValue, setSearchValue] = useState("Harry Potter");
+  const [favourites, setFavourites] = useState([]);
 
   const dispatch = useDispatch();
   const themeValue = useSelector((state) => state.theme);
@@ -82,6 +83,13 @@ function App() {
     getMovies();
   }, [searchValue]);
 
+  const addFavourite = (movie) => {
+		const newFavouriteList = [...favourites, movie];
+		setFavourites(newFavouriteList);
+    
+  console.log(favourites);
+	};
+
   return (
     <ThemeProvider theme={{ theme: themeValue }}>
       <Container>
@@ -100,8 +108,12 @@ function App() {
         </div>
 
         <div className="category-row">
-          <p class=" pl-8 font-medium ">Searched</p>
-          <MovieList movies={movies} />
+          <p className=" pl-8 font-medium ">Searched</p>
+          <MovieList handleAddFavourite = {addFavourite} movies={movies} />
+        </div>
+        <div className="category-row">
+          <p className=" pl-8 font-medium ">Favourites</p>
+          <MovieList movies={favourites} />
         </div>
       </Container>
     </ThemeProvider>

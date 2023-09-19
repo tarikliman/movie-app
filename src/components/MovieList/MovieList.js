@@ -39,8 +39,12 @@ export const MovieList = (props) => {
         {props.movies.map((movie) => {
           if (movie.Poster !== "N/A") {
             return (
-              <li className="item">
+              <li className="item image-container">
                 <img className="poster" alt="poster" src={movie.Poster} />
+                <div onClick={() => props.handleAddFavourite(movie)}
+                 className='overlay flex justify-center align-center'>
+						Add to Favourites
+					</div>
               </li>
             );
           }
