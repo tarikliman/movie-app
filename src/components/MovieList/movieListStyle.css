@@ -11,6 +11,19 @@
   margin-bottom: calc(-0.25 * var(--gutter));
 }
 
+
+
+@media only screen and (max-width: 1150px) {
+  .hs {
+    grid-auto-columns: calc(25% - var(--gutter) * 2);
+  }
+}
+@media only screen and (max-width: 700px) {
+  .hs {
+    grid-auto-columns: calc(50% - var(--gutter) * 2);
+  }
+}
+
 .hs:before,
 .hs:after {
   content: "";

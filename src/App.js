@@ -27,7 +27,7 @@ export const shadowColor = theme("theme", {
 const Container = styled.div`
   min-width: 100vw;
   min-height: 100vh;
-  padding: 20px 6rem;
+  padding: 20px 4vw;
   display: grid;
   grid-gap: var(--gutter) 0;
   grid-template-columns: var(--gutter) 1fr var(--gutter);
@@ -87,7 +87,7 @@ function App() {
       <Container>
         <div className="flex justify-between text-slate-50 mb-12">
           <SearchInput value={searchValue} setValue={setSearchValue} />
-          <button onClick={switchTheme}>
+          <button className="px-2" onClick={switchTheme}>
             {themeValue === 'dark' &&  <FontAwesomeIcon
               icon={faToggleOff}
               style={{	color: "rgb(226 232 240)", width: "40px", height: "auto" }}
