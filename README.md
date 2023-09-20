@@ -26,15 +26,15 @@ Discover and save your favorite movies with the Movie App. This React-based web 
 
 Here's a list of technologies and libraries used in the Movie App Project:
 
-* React: The core JavaScript library for building the user interface and handling the application's component-based structure.
+* **React**: The core JavaScript library for building the user interface and handling the application's component-based structure.
 
-* Redux: Redux is a predictable state management library commonly used with React.
+* **Redux**: Redux is a predictable state management library commonly used with React.
 
-* Component Styles: Component styles refer to the styling of individual components within a web application.
+* **Component Styles**: Component styles refer to the styling of individual components within a web application.
 
-* Tailwind CSS:Tailwind CSS is a utility-first CSS framework that simplifies the process of designing and styling web applications.
+* **Tailwind CSS**:Tailwind CSS is a utility-first CSS framework that simplifies the process of designing and styling web applications.
 
-* styled-theming: styled-theming is a library that enhances the styling capabilities of styled-components or other CSS-in-JS solutions. 
+* **styled-theming**: styled-theming is a library that enhances the styling capabilities of styled-components or other CSS-in-JS solutions. 
 
 ## Getting Started
 
