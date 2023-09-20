@@ -45,6 +45,7 @@
 }
 
 .arrow-button {
+  opacity:0.1;
   color: rgb(71 85 105);
   position: absolute;
 }
@@ -74,7 +75,7 @@
 	opacity: 0;
 	bottom: 0;
 	font-size: 12px;
-	padding: 20px;
+	padding: 10px 10px 24px;
 	text-align: center;
   color : white !important;
 }

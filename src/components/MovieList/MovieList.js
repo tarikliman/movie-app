@@ -2,12 +2,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./movieListStyle.css";
 export const MovieList = (props) => {
-  const scrollLeft = () => {
-    const left = document.querySelector(".hs");
+   let type = {};
+   props.type === "searched" ? type = {subtext : "Add Favourites"} :
+    type = {subtext : "Remove Favorite"}
+
+  const scrollLeft = (rowId) => {
+    const left = document.getElementById(rowId);
     left.scrollBy({ left: "-200", right: "0", behavior: "smooth" });
   };
-  const scrollRight = () => {
-    const right = document.querySelector(".hs");
+  const scrollRight = (rowId) => {
+    const right = document.getElementById(rowId);
     right.scrollBy({ left: "200", right: "0", behavior: "smooth" });
   };
 
@@ -16,7 +20,7 @@ export const MovieList = (props) => {
       <button
         className="arrow-button"
         style={{ left: "-26px", top: "43%" }}
-        onClick={scrollLeft}
+        onClick={() => scrollLeft(props.type)}
       >
         <FontAwesomeIcon
           icon={faArrowLeft}
@@ -27,7 +31,7 @@ export const MovieList = (props) => {
       <button
         className="arrow-button"
         style={{ right: "-30px", top: "45%" }}
-        onClick={scrollRight}
+        onClick={() => scrollRight(props.type)}
       >
         <FontAwesomeIcon
           icon={faArrowRight}
@@ -35,21 +39,21 @@ export const MovieList = (props) => {
         />
       </button>
 
-      <ul className="hs full no-scrollbar">
+      {props.movies && <ul id = {props.type} className="hs full no-scrollbar">
         {props.movies.map((movie) => {
           if (movie.Poster !== "N/A") {
             return (
-              <li className="item image-container">
+              <li key= {movie.imdbID} className="item image-container">
                 <img className="poster" alt="poster" src={movie.Poster} />
-                <div onClick={() => props.handleAddFavourite(movie)}
+                <div onClick={props.type === "searched" ?  () => props.handleAddFavourite(movie) : () => props.handleDeleteFavourite(movie)}
                  className='overlay flex justify-center align-center'>
-						Add to Favourites
+						{type.subtext}
 					</div>
               </li>
             );
           }
         })}
-      </ul>
+      </ul> } 
     </div>
   );
 };

@@ -79,6 +79,7 @@ function App() {
     }
   };
 
+  
   useEffect(() => {
     getMovies();
   }, [searchValue]);
@@ -86,9 +87,12 @@ function App() {
   const addFavourite = (movie) => {
 		const newFavouriteList = [...favourites, movie];
 		setFavourites(newFavouriteList);
-    
-  console.log(favourites);
 	};
+  
+  const deleteFavourite = (movie) => {
+    const filteredList = favourites.filter((favourity) => favourity.imdbID !==  movie.imdbID );
+    setFavourites(filteredList);
+  }
 
   return (
     <ThemeProvider theme={{ theme: themeValue }}>
@@ -109,11 +113,11 @@ function App() {
 
         <div className="category-row">
           <p className=" pl-8 font-medium ">Searched</p>
-          <MovieList handleAddFavourite = {addFavourite} movies={movies} />
+          <MovieList handleAddFavourite = {addFavourite} movies={movies} type = "searched"/>
         </div>
         <div className="category-row">
           <p className=" pl-8 font-medium ">Favourites</p>
-          <MovieList movies={favourites} />
+          <MovieList handleDeleteFavourite = {deleteFavourite} movies={favourites} type="favourites"/>
         </div>
       </Container>
     </ThemeProvider>

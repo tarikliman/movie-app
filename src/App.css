@@ -2,7 +2,9 @@
     --gutter: 20px;
   }
   
-
+.category-row:hover .arrow-button{
+  opacity:0.8;
+}
   .app > .full {
     grid-column: 1 / -1;
   }
@@ -21,3 +23,5 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  
